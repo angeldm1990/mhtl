@@ -35,6 +35,24 @@
         body {
             padding-top: 80px; /* Ajustar según la altura del header */
         }
+        /* Estilo para mostrar el logo arriba de las opciones en vista de teléfono */
+        @media (max-width: 640px) {
+            .logo-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mobile-center {
+                text-align: center;
+            }
+        }
+        .relative-container {
+            position: relative;
+        }
     </style>
     <script>
         /**
@@ -58,10 +76,9 @@
 </head>
 <body class="bg-white text-gray-800">
     <header class="bg-white shadow fixed-header">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center nav-container">
+            <div class="flex items-center logo-container">
                 <img alt="MH Transport Logistic Logo" class="mr-2" height="70" src="https://mhtransportlogistic.mx/wp-content/uploads/2023/02/Logo-1.png" width="250"/>
-                <span class="text-xl font-bold"></span>
             </div>
             <nav class="space-x-4 flex items-center">
                 <a href="#inicio">Inicio</a>
@@ -75,47 +92,71 @@
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
-        <section id="inicio" class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Soluciones logísticas integrales: primera, media y ultima milla con almacenamiento y recoleción confiables</h1>
-            <p class="text-lg text-gray-600 mb-6">Conectamos tu cadena logística de inicio a fin, asegurando entregas eficientes, seguras y puntuales en el sureste de México.</p>
-            <a href="https://wa.me/9931100903?text=Hola,%20quiero%20cotizar%20un%20envío" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded">Cotiza tu envío</a>
-            <p class="text-gray-500 mt-2">Respuesta en menos de 24 horas</p>
+        <section id="inicio" class="flex flex-col md:flex-row items-center mb-8">
+            <div class="md:w-1/2 text-left mobile-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Soluciones logísticas integrales: primera, media y ultima milla con almacenamiento y recoleción confiables</h1>
+                <p class="text-lg text-gray-600 mb-6">Conectamos tu cadena logística de inicio a fin, asegurando entregas eficientes, seguras y puntuales en el sureste de México.</p>
+                <a href="https://wa.me/9931100903?text=Hola,%20quiero%20cotizar%20un%20envío" target="_blank" class="bg-yellow-600 text-white px-6 py-2 rounded">Cotiza tu envío</a>
+                <p class="text-gray-500 mt-2">Respuesta en menos de 24 horas</p>
+            </div>
+            <div class="md:w-1/2 text-center relative-container">
+                <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://goo.su/Dur0R"/>
+            </div>
         </section>
-        <section id="servicios" class="mb-8">
-            <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://static6.depositphotos.com/1003559/644/i/450/depositphotos_6440330-stock-photo-white-truck.jpg"/>
-        </section>
+        <!-- Nuevo div con 5 espacios para iconos y descripciones -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex flex-col items-center">
+                <i class="fas fa-truck text-blue-600 text-3xl mb-2"></i>
+                <p class="text-gray-600 text-center">Entrega rápida</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-box text-blue-600 text-3xl mb-2"></i>
+                <p class="text-gray-600 text-center">Almacenamiento seguro</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-map-marker-alt text-blue-600 text-3xl mb-2"></i>
+                <p class="text-gray-600 text-center">Cobertura amplia</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-clock text-blue-600 text-3xl mb-2"></i>
+                <p class="text-gray-600 text-center">Puntualidad</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-shield-alt text-blue-600 text-3xl mb-2"></i>
+                <p class="text-gray-600 text-center">Seguridad</p>
+            </div>
+        </div>
         <section id="cobertura" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div class="bg-white shadow rounded p-4 text-center">
+            <div class="bg-white shadow rounded p-4 text-left">
                 <h2 class="text-2xl font-bold mb-4">¿Por qué elegirnos?</h2>
                 <ul class="list-none mb-8">
-                    <li class="flex items-center justify-center mb-2">
+                    <li class="flex items-center mb-2">
                         <i class="fas fa-check text-blue-600 mr-2"></i>
                         <span>Más de 5 años de experiencia en el sureste</span>
                     </li>
-                    <li class="flex items-center justify-center mb-2">
+                    <li class="flex items-center mb-2">
                         <i class="fas fa-check text-blue-600 mr-2"></i>
                         <span>Entregas el mismo día (same-day delivery)</span>
                     </li>
-                    <li class="flex items-center justify-center mb-2">
+                    <li class="flex items-center mb-2">
                         <i class="fas fa-check text-blue-600 mr-2"></i>
                         <span>Tecnología para rastreo en tiempo real</span>
                     </li>
                 </ul>
             </div>
-            <div class="bg-white shadow rounded p-4 text-center">
+            <div class="bg-white shadow rounded p-4 text-left">
                 <p class="text-2xl font-bold mb-4">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
                 <p class="text-lg text-gray-600 mt-4">Nuestros servicios abarcan las principales ciudades del sureste.</p>
-                <div class="mt-4 flex justify-center space-x-4">
-                    <img src="C:\Users\angel\Downloads\imagenmexico.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
-                    
+                <div class="mt-4 flex justify-center items-center">
+                    <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
                 </div>
             </div>
         </section>
         <section class="text-center">
             <div class="flex justify-center space-x-4">
-                <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="180"/>
-                <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="180"/>
-                <img alt="Liverpool logo" height="40" src="https://centrosantafe.com.mx/cdn/shop/products/Liverpool.png?v=1592500684" width="180"/>
+                <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
+                <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="100"/>
+                <img alt="Liverpool logo" height="40" src="https://centrosantafe.com.mx/cdn/shop/products/Liverpool.png?v=1592500684" width="100"/>
             </div>
         </section>
     </main>
