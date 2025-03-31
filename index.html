@@ -53,6 +53,9 @@
         .relative-container {
             position: relative;
         }
+        .logo-section {
+            margin-top: 40px; /* Ajusta este valor según sea necesario */
+        }
     </style>
     <script>
         /**
@@ -81,11 +84,11 @@
                 <img alt="MH Transport Logistic Logo" class="mr-2" height="70" src="https://mhtransportlogistic.mx/wp-content/uploads/2023/02/Logo-1.png" width="250"/>
             </div>
             <nav class="space-x-4 flex items-center">
-                <a hre="#inicio">Inicio</a>
-                <a hre="#servicios">Servicios</a>
-                <a hre="#cobertura">Cobertura</a>
-                <a hre="#nosotros">Nosotros</a>
-                <a hre="C:\Users\angel\OneDrive\Documentos\contacto ultima milla.html">Contacto</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#cobertura">Cobertura</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="C:\Users\angel\OneDrive\Documentos\contacto ultima milla.html">Contacto</a>
                 <input id="search-input" class="search-input border border-gray-300 rounded px-2 py-1" type="text" placeholder="Buscar..."/>
                 <a href="javascript:void(0);" onclick="toggleSearch()"><i class="fas fa-search"></i></a>
             </nav>
@@ -141,15 +144,14 @@
                 </div>
             </div>
         </div>
-            <div class="bg-white shadow rounded p-4 text-left">
-                <p class="text-2xl font-bold mb-4">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
-                <p class="text-lg text-gray-600 mt-4">Nuestros servicios abarcan las principales ciudades del sureste.</p>
-                <div class="mt-4 flex justify-center items-center">
-                    <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
-                </div>
+        <div class="bg-white shadow rounded p-4 text-left">
+            <p class="text-2xl font-bold mb-4">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
+            <p class="text-lg text-gray-600 mt-4">Nuestros servicios abarcan las principales ciudades del sureste.</p>
+            <div class="mt-4 flex justify-center items-center">
+                <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
             </div>
-        </section>
-        <section class="text-center">
+        </div>
+        <section class="text-center logo-section"> <!-- Se añadió la clase logo-section aquí -->
             <div class="flex justify-center space-x-4">
                 <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
                 <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="100"/>
