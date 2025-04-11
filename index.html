@@ -35,19 +35,55 @@
         body {
             padding-top: 80px; /* Ajustar según la altura del header */
         }
-        /* Estilo para mostrar el logo arriba de las opciones en vista de teléfono */
+        .nav-items-container {
+            display: flex;
+            align-items: center;
+        }
+        .nav-items-container a {
+            margin-left: 1rem;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+        .search-input {
+            margin-left: 0.5rem;
+        }
+        /* Estilo para la vista de teléfono */
         @media (max-width: 640px) {
+            .nav-container {
+                flex-direction: column; /* Apila verticalmente los elementos principales */
+                align-items: center; /* Centra horizontalmente los elementos principales */
+            }
             .logo-container {
                 display: flex;
-                justify-content: center;
+                justify-content: center; /* Centra el logo */
                 margin-bottom: 1rem;
+                width: 100%; /* Ocupa todo el ancho */
             }
-            .nav-container {
-                flex-direction: column;
-                align-items: center;
+            .nav-items-container {
+                display: flex; /* Alinea los elementos de navegación y búsqueda en fila */
+                flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay suficiente espacio */
+                justify-content: center; /* Centra los elementos horizontalmente */
+                width: 100%; /* Ocupa todo el ancho */
             }
-            .mobile-center {
+            .nav-items-container > * { /* Aplica estilos a todos los hijos directos */
+                margin: 0.5rem; /* Espacio alrededor de los enlaces y el buscador */
                 text-align: center;
+                flex-grow: 1; /* Los elementos crecen para ocupar el espacio disponible */
+                min-width: auto; /* Permite que el ancho se ajuste al contenido */
+            }
+            .nav-items-container a {
+                /* No necesitamos márgenes específicos aquí ya que el selector general los aplica */
+            }
+            .search-container {
+                /* No necesitamos márgenes específicos aquí ya que el selector general los aplica */
+                justify-content: center; /* Asegura que el contenido interno esté centrado */
+            }
+            .search-input {
+                margin-left: 0.5rem;
+                width: auto; /* Ajusta el ancho del input */
             }
         }
         .relative-container {
@@ -66,10 +102,10 @@
         function toggleSearch() {
             // Obtiene el elemento del campo de búsqueda por su ID
             const searchInput = document.getElementById('search-input');
-            
+
             // Alterna la clase 'active' en el campo de búsqueda
             searchInput.classList.toggle('active');
-            
+
             // Si el campo de búsqueda está activo, enfoca el campo de entrada
             if (searchInput.classList.contains('active')) {
                 searchInput.focus();
@@ -80,18 +116,20 @@
 <body class="bg-white text-gray-800">
     <header class="bg-white shadow fixed-header">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center nav-container">
-            <div class="flex items-center logo-container">
+            <div class="logo-container">
                 <img alt="MH Transport Logistic Logo" class="mr-2" height="70" src="https://mhtransportlogistic.mx/wp-content/uploads/2023/02/Logo-1.png" width="250"/>
             </div>
-            <nav class="space-x-4 flex items-center">
+            <div class="nav-items-container">
                 <a href="#inicio">Inicio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#cobertura">Cobertura</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="C:\Users\angel\OneDrive\Documentos\contacto ultima milla.html">Contacto</a>
-                <input id="search-input" class="search-input border border-gray-300 rounded px-2 py-1" type="text" placeholder="Buscar..."/>
-                <a href="javascript:void(0);" onclick="toggleSearch()"><i class="fas fa-search"></i></a>
-            </nav>
+                <div class="search-container">
+                    <input id="search-input" class="search-input border border-gray-300 rounded px-2 py-1" type="text" placeholder="Buscar..."/>
+                    <a href="javascript:void(0);" onclick="toggleSearch()"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
@@ -106,7 +144,6 @@
                 <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://scontent.fvsa2-1.fna.fbcdn.net/v/t39.30808-6/487376005_10231269828186891_9177228084355047985_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OPvAK6I47XUQ7kNvwFpfePb&_nc_oc=Adkh_FmOiUsuHsIeAmB3t6NKK-l03tsU1GIZc-FgEJuQ9mGnrRnpFM5wSkHr6bGWLhY&_nc_zt=23&_nc_ht=scontent.fvsa2-1.fna&_nc_gid=H-oD6AZFBBxoCG50jmjt1g&oh=00_AfEq3lLSCtlCKWh1JL3qCG6XghQSuLU4jKPFJMtVrNBWBg&oe=67FF2437"/>
             </div>
         </section>
-        <!-- Nuevo div con 5 espacios para iconos y descripciones -->
         <div class="flex overflow-x-auto mb-8">
             <div class="flex flex-col items-center mx-2">
                 <i class="fas fa-box text-blue-600 text-3xl mb-2"></i>
@@ -151,8 +188,7 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
             </div>
         </div>
-        <section class="text-center logo-section"> <!-- Se añadió la clase logo-section aquí -->
-            <div class="flex justify-center space-x-4">
+        <section class="text-center logo-section"> <div class="flex justify-center space-x-4">
                 <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
                 <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="100"/>
                 <img alt="Liverpool logo" height="40" src="https://centrosantafe.com.mx/cdn/shop/products/Liverpool.png?v=1592500684" width="100"/>
@@ -161,3 +197,4 @@
     </main>
 </body>
 </html>
+         
