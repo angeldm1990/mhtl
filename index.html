@@ -53,38 +53,60 @@
         /* Estilo para la vista de teléfono */
         @media (max-width: 640px) {
             .nav-container {
-                flex-direction: column; /* Apila verticalmente los elementos principales */
-                align-items: center; /* Centra horizontalmente los elementos principales */
+                flex-direction: column;
+                align-items: center;
             }
             .logo-container {
                 display: flex;
-                justify-content: center; /* Centra el logo */
+                justify-content: center;
                 margin-bottom: 1rem;
-                width: 100%; /* Ocupa todo el ancho */
+                width: 100%;
             }
             .nav-items-container {
-                display: flex; /* Alinea los elementos de navegación y búsqueda en fila */
-                flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay suficiente espacio */
-                justify-content: center; /* Centra los elementos horizontalmente */
-                width: 100%; /* Ocupa todo el ancho */
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
             }
-            .nav-items-container > * { /* Aplica estilos a todos los hijos directos */
-                margin: 0.5rem; /* Espacio alrededor de los enlaces y el buscador */
+            .nav-items-container > * {
+                margin: 0.5rem;
                 text-align: center;
-                flex-grow: 1; /* Los elementos crecen para ocupar el espacio disponible */
-                min-width: auto; /* Permite que el ancho se ajuste al contenido */
-            }
-            .nav-items-container a {
-                /* No necesitamos márgenes específicos aquí ya que el selector general los aplica */
+                flex-grow: 1;
+                min-width: auto;
             }
             .search-container {
-                /* No necesitamos márgenes específicos aquí ya que el selector general los aplica */
-                justify-content: center; /* Asegura que el contenido interno esté centrado */
+                justify-content: center;
             }
             .search-input {
                 margin-left: 0.5rem;
-                width: auto; /* Ajusta el ancho del input */
+                width: auto;
             }
+            #inicio {
+                flex-direction: column;
+                align-items: stretch;
+                padding-top: 80px; /* Añadir padding superior igual a la altura de la cabecera */
+            }
+            #inicio > div:first-child { /* Contenedor del texto */
+                width: 100%;
+                margin-bottom: 1rem;
+                min-height: auto;
+            }
+            #inicio h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+            #inicio p {
+                font-size: 1rem;
+            }
+            #inicio > div:last-child { /* Contenedor de la imagen */
+                width: 100%;
+                max-height: 300px;
+                object-fit: cover;
+                margin-bottom: 1rem;
+            }
+            /* .mobile-center { */
+            /* text-align: center; */
+            /* } */
         }
         .relative-container {
             position: relative;
@@ -181,11 +203,11 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white shadow rounded p-4 text-left">
-            <p class="text-2xl font-bold mb-4">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
-            <p class="text-lg text-gray-600 mt-4">Nuestros servicios abarcan las principales ciudades del sureste.</p>
-            <div class="mt-4 flex justify-center items-center">
-                <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="w-16 h-16 object-cover rounded">
+        <div class="bg-white shadow rounded p-4">
+            <p class="text-2xl font-bold mb-4 text-left">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
+            <p class="text-lg text-gray-600 mt-4 text-left">Nuestros servicios abarcan las principales ciudades del sureste.</p>
+            <div class="mt-4 flex justify-center items-center" style="width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+                <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="rounded" style="object-fit: contain; max-width: 100%; max-height: 100%;">
             </div>
         </div>
         <section class="text-center logo-section"> <div class="flex justify-center space-x-4">
