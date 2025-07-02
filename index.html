@@ -171,7 +171,7 @@
             </div>
         </section>
 
-        <!-- Modal del formulario ACTUALIZADO -->
+        <!-- Modal del formulario CORREGIDO -->
         <div id="cotizacionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()" style="float: right; cursor: pointer; font-size: 1.5rem;">&times;</span>
@@ -179,7 +179,7 @@
                 <form id="cotizacionForm" action="https://formsubmit.co/angel.diaz9090@gmail.com" method="POST" target="_blank">
                     <input type="hidden" name="_subject" value="Nueva cotización desde MH Transport">
                     <input type="hidden" name="_autoresponse" value="¡Gracias por tu cotización! Hemos recibido tu solicitud y nos contactaremos contigo en menos de 24 horas.">
-                    <!-- ESTA ES LA CLAVE PARA CERRAR LA PESTAÑA -->
+                    <!-- Esto hace que la pestaña se cierre después del envío -->
                     <input type="hidden" name="_next" value="javascript:window.close()">
                     
                     <div class="mb-4">
@@ -212,50 +212,13 @@
                     <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-700 transition">Enviar solicitud</button>
                 </form>
                 
-                <!-- Mensaje de éxito que se muestra en TU PÁGINA -->
                 <div id="mensajeExito" class="mensaje-exito">
                     ✓ Cotización enviada con éxito
                 </div>
             </div>
         </div>
 
-        <div class="flex overflow-x-auto mb-8">
-            <div class="flex flex-col items-center mx-2">
-                <i class="fas fa-box text-blue-600 text-3xl mb-2"></i>
-                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
-                    <p class="text-gray-600 text-center font-bold">Primera milla</p>
-                    <p class="text-gray-500 text-center mt-2">Recogemos mercancía en origen.</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center mx-2">
-                <i class="fas fa-truck text-blue-600 text-3xl mb-2"></i>
-                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
-                    <p class="text-gray-600 text-center font-bold">Media milla</p>
-                    <p class="text-gray-500 text-center mt-2">Movemos mercancía entre tiendas, centros de distribución.</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center mx-2">
-                <i class="fas fa-shuttle-van text-blue-600 text-3xl mb-2"></i>
-                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
-                    <p class="text-gray-600 text-center font-bold">Última milla</p>
-                    <p class="text-gray-500 text-center mt-2">Entregamos en puntos de destino.</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center mx-2">
-                <i class="fas fa-solid fa-calendar-days text-blue-600 text-3xl mb-2"></i>
-                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
-                    <p class="text-gray-600 text-center font-bold">Recolección programada</p>
-                    <p class="text-gray-500 text-center mt-2">Tecnología para rastreo en tiempo real.</p>
-                </div>
-            </div>
-            <div class="flex flex-col items-center mx-2">
-                <i class="fas fa-warehouse text-blue-600 text-3xl mb-2"></i>
-                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
-                    <p class="text-gray-600 text-center font-bold">Almacenamiento estratégico</p>
-                    <p class="text-gray-500 text-center mt-2">Administramos tu estructura más óptimamente.</p>
-                </div>
-            </div>
-        </div>
+        
         <div class="bg-white shadow rounded p-4">
             <p class="text-2xl font-bold mb-4 text-left">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
             <p class="text-lg text-gray-600 mt-4 text-left">Nuestros servicios abarcan las principales ciudades del sureste.</p>
@@ -306,10 +269,13 @@
             // Muestra el mensaje de éxito en TU PÁGINA
             document.getElementById('mensajeExito').style.display = 'block';
             
-            // Opcional: Cierra el modal después de 1 segundo
+            // Opcional: Cierra el modal después de 2 segundos
             setTimeout(function() {
                 closeModal();
-            }, 3000);
+            }, 2000);
+            
+            // El formulario se enviará a Formsubmit en nueva pestaña
+            // y se cerrará automáticamente después del envío
         });
     </script>
 </body>
