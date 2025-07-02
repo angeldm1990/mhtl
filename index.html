@@ -157,18 +157,15 @@
                 <a href="#servicios">Servicios</a>
                 <a href="#cobertura">Cobertura</a>
                 <a href="#nosotros">Nosotros</a>
-                <button 
-  onclick="openModal()" 
-  class="bg-yellow-600 text-white px-4 py-1.5 rounded min-w-[130px] max-w-[130px] text-sm ml-4"
->
-  Cotiza tu envío
-</button>
+                <button onclick="openModal()" class="bg-yellow-600 text-white px-4 py-1.5 rounded min-w-[130px] max-w-[130px] text-sm ml-4">
+                Cotiza tu envío
+                </button>
                 
             </div>
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
-        <section id="inicio" class="flex flex-col md:flex-row items-center mb-8">
+        <section id="inicio" class="flex flex-col md:flex-row items-center mb-8 scroll-mt-[150px]">
             <div class="md:w-1/2 text-left mobile-center">
                 <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Soluciones logísticas integrales: primera, media y ultima milla con almacenamiento y recoleción confiables</h1>
                 <p class="text-lg text-gray-600 mb-6">Conectamos tu cadena logística de inicio a fin, asegurando entregas eficientes, seguras y puntuales en el sureste de México.</p>
@@ -232,15 +229,110 @@
             </div>
         </div>
 
-        <div class="bg-white shadow rounded p-4" style="position: relative; z-index: 1;">
-            <p class="text-2xl font-bold mb-4 text-left" style="position: relative; z-index: 2;">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
-        <p class="text-lg text-gray-600 mt-4 mb-6 text-left" style="position: relative; z-index: 2;">Nuestros servicios abarcan las principales ciudades del sureste.</p>
-            <div class="mt-4 flex justify-center items-center" style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; position: relative; z-index: 1;">
-            <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png"
-         alt="Mapa de Tabasco en azul" class="rounded"
-         style="object-fit: contain; max-width: 100%; max-height: 100%; position: relative; z-index: 1;">
+            <div class="bg-white shadow rounded-lg p-4 md:p-8 w-full mb-12">
+        <!-- Título oculto pero espacio respetado -->
+         <div id="servicios" class="mt-12" style="scroll-margin-top: 115px;">
+        <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-12 text-center md:text-left uppercase invisible">SERVICIOS</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+            <!-- Servicio 1 -->
+            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
+                <div class="flex items-center mb-3 justify-center md:justify-start">
+                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
+                    <h3 class="text-xl md:text-2xl font-semibold">Primera Milla</h3>
+                </div>
+                <p class="text-gray-600 md:text-lg">
+                    Recolectamos mercancía desde origen y la trasladamos a puntos logísticos iniciales.
+                </p>
+            </div>
+            
+            <!-- Servicio 2 -->
+            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
+                <div class="flex items-center mb-3 justify-center md:justify-start">
+                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
+                    <h3 class="text-xl md:text-2xl font-semibold">Media Milla</h3>
+                </div>
+                <p class="text-gray-600 md:text-lg">
+                    Transporte entre centros logísticos optimizando eficiencia operativa.
+                </p>
+            </div>
+            
+            <!-- Servicio 3 -->
+            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
+                <div class="flex items-center mb-3 justify-center md:justify-start">
+                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
+                    <h3 class="text-xl md:text-2xl font-semibold">Almacenamiento</h3>
+                </div>
+                <p class="text-gray-600 md:text-lg">
+                    Espacios seguros con control de inventario y trazabilidad.
+                </p>
+            </div>
+            
+            <!-- Servicio 4 -->
+            <div class="text-center md:text-left">
+                <div class="flex items-center mb-3 justify-center md:justify-start">
+                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
+                    <h3 class="text-xl md:text-2xl font-semibold">Entregas Programadas</h3>
+                </div>
+                <p class="text-gray-600 md:text-lg">
+                    Calendarización precisa según requerimientos del cliente.
+                </p>
             </div>
         </div>
+    </div>
+
+            <div id="cobertura" class="mt-12" style="scroll-margin-top: 115px;"></div>
+         <div class="bg-white shadow rounded p-4 mb-10" style="position: relative; z-index: 1;">
+    <!-- Texto introductorio -->
+    <div id="" class="mt-12" style="scroll-margin-top: 115px;">
+        <p class="text-2xl font-medium mb-4 text-center" style="position: relative; z-index: 2;">
+            Operamos con infraestructura propia en el sureste del país, brindando soluciones logísticas eficientes en los siguientes estados:
+        </p>
+    </div>
+
+    <!-- Estados + Mapa siempre en columnas -->
+    <div class="grid grid-cols-2 items-center justify-items-center gap-4 mb-6" style="position: relative; z-index: 2;">
+        <!-- Lista de estados centrada -->
+        <ul class="list-disc text-lg text-gray-700 text-center space-y-1">
+            <li>Chiapas</li>
+            <li>Tabasco</li>
+            <li>Veracruz</li>
+            <li>Campeche</li>
+            <li>Yucatán</li>
+            <li>Quintana Roo</li>
+        </ul>
+
+        <!-- Mapa más grande y centrado -->
+        <div class="flex justify-center">
+            <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png"
+                 alt="Mapa de México"
+                 class="object-contain max-w-[140px] sm:max-w-[180px] md:max-w-[220px]" style="background: transparent;">
+        </div>
+    </div>
+
+    <!-- Texto final -->
+    <p class="text-lg text-gray-600 mt-4 text-center" style="position: relative; z-index: 2;">
+        Nuestra presencia estratégica nos permite atender entregas urbanas, foráneas y programadas con altos estándares de calidad y cumplimiento.
+    </p>
+    </div>
+
+
+<div class="bg-white shadow rounded p-4 mb-10" style="position: relative; z-index: 1;">
+    <div id="nosotros" class="mt-12" style="scroll-margin-top: 170px;">
+    <p class="text-2xl font-medium mb-4 text-center" style="position: relative; z-index: 2;">
+        En MH Transport Logistic, somos una empresa especializada en soluciones de transporte y logística de última milla, media milla y primera milla. Con más de 5 años de experiencia, hemos logrado posicionarnos como un socio confiable para marcas líderes del sector retail, e-commerce y distribución.
+    </p>
+
+    <p class="text-lg text-gray-600 mb-6 text-center" style="position: relative; z-index: 2;">
+        Contamos con un equipo operativo altamente capacitado, infraestructura propia, tecnología de monitoreo y un compromiso firme con la puntualidad, seguridad y eficiencia en cada entrega.
+    </p>
+
+    <p class="text-lg text-gray-600 text-center" style="position: relative; z-index: 2;">
+        Nuestro enfoque está en brindar un servicio flexible, profesional y adaptado a las necesidades de cada cliente.
+    </p>
+</div>
+
+
 
         <section class="text-center logo-section"> <div class="flex justify-center space-x-4">
                 <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
