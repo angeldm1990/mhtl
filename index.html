@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8"/>
@@ -6,17 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-    <!-- Añade reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
         }
         nav a {
-            color: #4B5563; /* Tailwind's gray-600 color */
+            color: #4B5563;
         }
         nav a:hover {
-            color: #1D4ED8; /* Tailwind's blue-600 color */
+            color: #1D4ED8;
         }
         .search-input {
             display: none;
@@ -24,7 +23,6 @@
         .search-input.active {
             display: inline-block;
         }
-        /* Estilo para hacer que el header sea fijo */
         .fixed-header {
             position: fixed;
             top: 0;
@@ -33,9 +31,8 @@
             z-index: 1000;
             background-color: white;
         }
-        /* Añadir padding-top al body para evitar que el contenido se superponga con el header fijo */
         body {
-            padding-top: 80px; /* Ajustar según la altura del header */
+            padding-top: 80px;
         }
         .nav-items-container {
             display: flex;
@@ -52,7 +49,6 @@
         .search-input {
             margin-left: 0.5rem;
         }
-        /* Estilo para el modal */
         .modal {
             display: none;
             position: fixed;
@@ -72,7 +68,6 @@
             width: 90%;
             max-width: 500px;
         }
-        /* Estilo para la vista de teléfono */
         @media (max-width: 640px) {
             .nav-container {
                 flex-direction: column;
@@ -106,9 +101,9 @@
             #inicio {
                 flex-direction: column;
                 align-items: stretch;
-                padding-top: 80px; /* Añadir padding superior igual a la altura de la cabecera */
+                padding-top: 80px;
             }
-            #inicio > div:first-child { /* Contenedor del texto */
+            #inicio > div:first-child {
                 width: 100%;
                 margin-bottom: 1rem;
                 min-height: auto;
@@ -120,7 +115,7 @@
             #inicio p {
                 font-size: 1rem;
             }
-            #inicio > div:last-child { /* Contenedor de la imagen */
+            #inicio > div:last-child {
                 width: 100%;
                 max-height: 300px;
                 object-fit: cover;
@@ -131,9 +126,8 @@
             position: relative;
         }
         .logo-section {
-            margin-top: 40px; /* Ajusta este valor según sea necesario */
+            margin-top: 40px;
         }
-        /* Estilo para el mensaje de éxito */
         .mensaje-exito {
             display: none;
             margin-top: 1rem;
@@ -144,25 +138,6 @@
             text-align: center;
         }
     </style>
-    <script>
-        /**
-         * Función para alternar la visibilidad del campo de búsqueda.
-         * Cuando se hace clic en el icono de búsqueda, esta función
-         * muestra u oculta el campo de entrada de búsqueda.
-         */
-        function toggleSearch() {
-            // Obtiene el elemento del campo de búsqueda por su ID
-            const searchInput = document.getElementById('search-input');
-
-            // Alterna la clase 'active' en el campo de búsqueda
-            searchInput.classList.toggle('active');
-
-            // Si el campo de búsqueda está activo, enfoca el campo de entrada
-            if (searchInput.classList.contains('active')) {
-                searchInput.focus();
-            }
-        }
-    </script>
 </head>
 <body class="bg-white text-gray-800">
     <header class="bg-white shadow fixed-header">
@@ -188,23 +163,20 @@
             <div class="md:w-1/2 text-left mobile-center">
                 <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Soluciones logísticas integrales: primera, media y ultima milla con almacenamiento y recoleción confiables</h1>
                 <p class="text-lg text-gray-600 mb-6">Conectamos tu cadena logística de inicio a fin, asegurando entregas eficientes, seguras y puntuales en el sureste de México.</p>
-                <!-- Botón de cotización modificado -->
                 <button onclick="openModal()" class="bg-yellow-600 text-white px-6 py-2 rounded">Cotiza tu envío</button>
                 <p class="text-gray-500 mt-2">Respuesta en menos de 24 horas</p>
-                <!-- Botón de WhatsApp (se mantiene) -->
-                <a href="https://wa.me/9932778462?text=Hola,%20quiero%20cotizar%20un%20envío" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded mt-2 inline-block">Cotizar por WhatsApp</a>
             </div>
             <div class="md:w-1/2 text-center relative-container">
                 <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://github.com/angeldm1990/mhtl/blob/main/camionlogo.jpg?raw=true"/>
             </div>
         </section>
 
-        <!-- Modal del formulario de cotización MODIFICADO -->
+        <!-- Modal del formulario de cotización -->
         <div id="cotizacionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()" style="float: right; cursor: pointer; font-size: 1.5rem;">&times;</span>
                 <h2 class="text-2xl font-bold text-blue-800 mb-4">Solicita tu cotización</h2>
-                <form id="cotizacionForm" action="https://formsubmit.co/angel.diaz9090@gmail.com" method="POST">
+                <form id="cotizacionForm" action="https://formsubmit.co/angel.diaz9090@gmail.com" method="POST" target="_blank">
                     <input type="hidden" name="_subject" value="Nueva cotización desde MH Transport">
                     <input type="hidden" name="_autoresponse" value="¡Gracias por tu cotización! Hemos recibido tu solicitud y nos contactaremos contigo en menos de 24 horas.">
                     
@@ -235,14 +207,10 @@
                         <label class="block text-gray-700 mb-2 font-medium">Detalles del envío</label>
                         <textarea name="mensaje" class="w-full px-3 py-2 border border-gray-300 rounded" rows="4" placeholder="Origen, destino, tipo de mercancía, dimensiones, peso, etc." required></textarea>
                     </div>
-                    
-                    <!-- reCAPTCHA -->
-                    <div class="g-recaptcha mb-4" data-sitekey="TU_SITE_KEY"></div>
-                    
                     <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-700 transition">Enviar solicitud</button>
                 </form>
                 
-                <!-- Mensaje de éxito (oculto inicialmente) -->
+                <!-- Mensaje de éxito -->
                 <div id="mensajeExito" class="mensaje-exito">
                     ✓ Cotización enviada con éxito
                 </div>
@@ -302,6 +270,15 @@
     </main>
 
     <script>
+        // Función para el buscador
+        function toggleSearch() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.classList.toggle('active');
+            if (searchInput.classList.contains('active')) {
+                searchInput.focus();
+            }
+        }
+
         // Funciones para el modal de cotización
         function openModal() {
             document.getElementById('cotizacionModal').style.display = 'flex';
@@ -312,7 +289,6 @@
             // Resetea el formulario al cerrar
             document.getElementById('cotizacionForm').reset();
             document.getElementById('mensajeExito').style.display = 'none';
-            grecaptcha.reset();
         }
 
         // Cerrar modal al hacer clic fuera del contenido
@@ -323,37 +299,17 @@
             }
         }
 
-        // Manejo del formulario MODIFICADO
+        // Manejar el envío del formulario
         document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Muestra el mensaje de éxito
+            document.getElementById('mensajeExito').style.display = 'block';
+            // Oculta el formulario
+            this.style.display = 'none';
+            // Cierra el modal después de 3 segundos
+            setTimeout(closeModal, 3000);
             
-            // Verifica reCAPTCHA
-            if(grecaptcha.getResponse().length === 0) {
-                alert("Por favor, completa el reCAPTCHA");
-                return;
-            }
-            
-            // Envía el formulario
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this)
-            })
-            .then(response => {
-                if(response.ok) {
-                    // Muestra mensaje de éxito
-                    document.getElementById('mensajeExito').style.display = 'block';
-                    // Oculta el formulario
-                    this.style.display = 'none';
-                    // Cierra el modal después de 3 segundos
-                    setTimeout(closeModal, 3000);
-                } else {
-                    throw new Error('Error en el envío');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error al enviar tu cotización. Por favor, inténtalo de nuevo.');
-            });
+            // El formulario se enviará normalmente a Formsubmit en la nueva pestaña
+            // gracias al atributo target="_blank"
         });
     </script>
 </body>
