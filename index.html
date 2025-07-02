@@ -6,6 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <!-- Añade reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -131,7 +133,36 @@
         .logo-section {
             margin-top: 40px; /* Ajusta este valor según sea necesario */
         }
+        /* Estilo para el mensaje de éxito */
+        .mensaje-exito {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f0fff4;
+            color: #2f855a;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
     </style>
+    <script>
+        /**
+         * Función para alternar la visibilidad del campo de búsqueda.
+         * Cuando se hace clic en el icono de búsqueda, esta función
+         * muestra u oculta el campo de entrada de búsqueda.
+         */
+        function toggleSearch() {
+            // Obtiene el elemento del campo de búsqueda por su ID
+            const searchInput = document.getElementById('search-input');
+
+            // Alterna la clase 'active' en el campo de búsqueda
+            searchInput.classList.toggle('active');
+
+            // Si el campo de búsqueda está activo, enfoca el campo de entrada
+            if (searchInput.classList.contains('active')) {
+                searchInput.focus();
+            }
+        }
+    </script>
 </head>
 <body class="bg-white text-gray-800">
     <header class="bg-white shadow fixed-header">
@@ -160,21 +191,22 @@
                 <!-- Botón de cotización modificado -->
                 <button onclick="openModal()" class="bg-yellow-600 text-white px-6 py-2 rounded">Cotiza tu envío</button>
                 <p class="text-gray-500 mt-2">Respuesta en menos de 24 horas</p>
+                <!-- Botón de WhatsApp (se mantiene) -->
+                <a href="https://wa.me/9932778462?text=Hola,%20quiero%20cotizar%20un%20envío" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded mt-2 inline-block">Cotizar por WhatsApp</a>
             </div>
             <div class="md:w-1/2 text-center relative-container">
                 <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://github.com/angeldm1990/mhtl/blob/main/camionlogo.jpg?raw=true"/>
             </div>
         </section>
 
-        <!-- Modal del formulario de cotización -->
+        <!-- Modal del formulario de cotización MODIFICADO -->
         <div id="cotizacionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()" style="float: right; cursor: pointer; font-size: 1.5rem;">&times;</span>
                 <h2 class="text-2xl font-bold text-blue-800 mb-4">Solicita tu cotización</h2>
-                <form action="https://formsubmit.co/angel.diaz9090@gmail.com" method="POST">
+                <form id="cotizacionForm" action="https://formsubmit.co/angel.diaz9090@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="Nueva cotización desde MH Transport">
                     <input type="hidden" name="_autoresponse" value="¡Gracias por tu cotización! Hemos recibido tu solicitud y nos contactaremos contigo en menos de 24 horas.">
-                    <input type="hidden" name="_next" value="#inicio"> <!-- Redirige a la sección de inicio -->
                     
                     <div class="mb-4">
                         <label class="block text-gray-700 mb-2 font-medium">Nombre completo</label>
@@ -203,33 +235,73 @@
                         <label class="block text-gray-700 mb-2 font-medium">Detalles del envío</label>
                         <textarea name="mensaje" class="w-full px-3 py-2 border border-gray-300 rounded" rows="4" placeholder="Origen, destino, tipo de mercancía, dimensiones, peso, etc." required></textarea>
                     </div>
+                    
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha mb-4" data-sitekey="TU_SITE_KEY"></div>
+                    
                     <button type="submit" class="bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-700 transition">Enviar solicitud</button>
                 </form>
+                
+                <!-- Mensaje de éxito (oculto inicialmente) -->
+                <div id="mensajeExito" class="mensaje-exito">
+                    ✓ Cotización enviada con éxito
+                </div>
             </div>
         </div>
 
-        <!-- Resto de tu contenido existente... -->
         <div class="flex overflow-x-auto mb-8">
-            <!-- Tus cards de servicios existentes... -->
+            <div class="flex flex-col items-center mx-2">
+                <i class="fas fa-box text-blue-600 text-3xl mb-2"></i>
+                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
+                    <p class="text-gray-600 text-center font-bold">Primera milla</p>
+                    <p class="text-gray-500 text-center mt-2">Recogemos mercancía en origen.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center mx-2">
+                <i class="fas fa-truck text-blue-600 text-3xl mb-2"></i>
+                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
+                    <p class="text-gray-600 text-center font-bold">Media milla</p>
+                    <p class="text-gray-500 text-center mt-2">Movemos mercancía entre tiendas, centros de distribución.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center mx-2">
+                <i class="fas fa-shuttle-van text-blue-600 text-3xl mb-2"></i>
+                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
+                    <p class="text-gray-600 text-center font-bold">Última milla</p>
+                    <p class="text-gray-500 text-center mt-2">Entregamos en puntos de destino.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center mx-2">
+                <i class="fas fa-solid fa-calendar-days text-blue-600 text-3xl mb-2"></i>
+                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
+                    <p class="text-gray-600 text-center font-bold">Recolección programada</p>
+                    <p class="text-gray-500 text-center mt-2">Tecnología para rastreo en tiempo real.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center mx-2">
+                <i class="fas fa-warehouse text-blue-600 text-3xl mb-2"></i>
+                <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-4">
+                    <p class="text-gray-600 text-center font-bold">Almacenamiento estratégico</p>
+                    <p class="text-gray-500 text-center mt-2">Administramos tu estructura más óptimamente.</p>
+                </div>
+            </div>
         </div>
         <div class="bg-white shadow rounded p-4">
-            <!-- Tu sección de cobertura existente... -->
+            <p class="text-2xl font-bold mb-4 text-left">Cobertura activa en Tabasco, Chiapas y ampliación continua.</p>
+            <p class="text-lg text-gray-600 mt-4 text-left">Nuestros servicios abarcan las principales ciudades del sureste.</p>
+            <div class="mt-4 flex justify-center items-center" style="width: 100px; height: 100px; margin-left: auto; margin-right: auto;">
+                <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png" alt="Mapa de Tabasco en azul" class="rounded" style="object-fit: contain; max-width: 100%; max-height: 100%;">
+            </div>
         </div>
-        <section class="text-center logo-section">
-            <!-- Tus logos de clientes existentes... -->
+        <section class="text-center logo-section"> <div class="flex justify-center space-x-4">
+                <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
+                <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="100"/>
+                <img alt="Liverpool logo" height="40" src="https://centrosantafe.com.mx/cdn/shop/products/Liverpool.png?v=1592500684" width="100"/>
+            </div>
         </section>
     </main>
 
     <script>
-        // Función para el buscador (existente)
-        function toggleSearch() {
-            const searchInput = document.getElementById('search-input');
-            searchInput.classList.toggle('active');
-            if (searchInput.classList.contains('active')) {
-                searchInput.focus();
-            }
-        }
-
         // Funciones para el modal de cotización
         function openModal() {
             document.getElementById('cotizacionModal').style.display = 'flex';
@@ -237,6 +309,10 @@
 
         function closeModal() {
             document.getElementById('cotizacionModal').style.display = 'none';
+            // Resetea el formulario al cerrar
+            document.getElementById('cotizacionForm').reset();
+            document.getElementById('mensajeExito').style.display = 'none';
+            grecaptcha.reset();
         }
 
         // Cerrar modal al hacer clic fuera del contenido
@@ -246,6 +322,39 @@
                 closeModal();
             }
         }
+
+        // Manejo del formulario MODIFICADO
+        document.getElementById('cotizacionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Verifica reCAPTCHA
+            if(grecaptcha.getResponse().length === 0) {
+                alert("Por favor, completa el reCAPTCHA");
+                return;
+            }
+            
+            // Envía el formulario
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => {
+                if(response.ok) {
+                    // Muestra mensaje de éxito
+                    document.getElementById('mensajeExito').style.display = 'block';
+                    // Oculta el formulario
+                    this.style.display = 'none';
+                    // Cierra el modal después de 3 segundos
+                    setTimeout(closeModal, 3000);
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar tu cotización. Por favor, inténtalo de nuevo.');
+            });
+        });
     </script>
 </body>
 </html>
