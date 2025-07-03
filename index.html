@@ -50,31 +50,28 @@
             margin-left: 0.5rem;
         }
         .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
         }
-
         .modal-content {
-        background-color: white;
-        padding: 1.5rem;
-        border-radius: 8px;
-        width: 95%;
-        max-width: 460px;
-        box-sizing: border-box;
-        font-size: 0.80rem; /* fuente un poco más pequeña */
-        line-height: 1.4;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 95%;
+            max-width: 460px;
+            box-sizing: border-box;
+            font-size: 0.80rem;
+            line-height: 1.4;
         }
-
-
         .mensaje-exito {
             display: none;
             margin-top: 1rem;
@@ -84,6 +81,32 @@
             border-radius: 0.5rem;
             text-align: center;
         }
+        
+        /* ========== NUEVOS ESTILOS PARA ANIMACIONES ========== */
+        .scroll-animate {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate-fade {
+            transform: none;
+        }
+        .animate-up {
+            transform: translateY(30px);
+        }
+        .animate-left {
+            transform: translateX(-30px);
+        }
+        .animate-right {
+            transform: translateX(30px);
+        }
+        .animate-scale {
+            transform: scale(0.95);
+        }
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: none !important;
+        }
+        
         @media (max-width: 640px) {
             .nav-container {
                 flex-direction: column;
@@ -144,6 +167,40 @@
         .logo-section {
             margin-top: 40px;
         }
+ /* ========== TUS ESTILOS EXISTENTES ========== */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* ... (todos tus otros estilos actuales) ... */
+        
+        .logo-section {
+            margin-top: 40px;
+        }
+
+        /* ========== NUEVAS ANIMACIONES PARA ICONOS ========== */
+        /* Efecto base para todos los iconos */
+        .fas {
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        /* Efecto al pasar el mouse */
+        .fas:hover {
+            transform: scale(1.15) rotate(12deg);
+            filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.3));
+        }
+        
+        /* Colores personalizados por icono */
+        .fa-truck-loading:hover { color: #3b82f6; } /* azul */
+        .fa-truck-moving:hover { color: #10b981; }  /* verde */
+        .fa-warehouse:hover { color: #f59e0b; }     /* amarillo */
+        .fa-calendar-check:hover { color: #ef4444; } /* rojo */
+        
+        /* ========== TUS MEDIA QUERIES (se mantienen igual) ========== */
+        @media (max-width: 640px) {
+            /* ... (tus media queries existentes) ... */
+        }
+        
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -158,26 +215,25 @@
                 <a href="#cobertura">Cobertura</a>
                 <a href="#nosotros">Nosotros</a>
                 <button onclick="openModal()" class="bg-yellow-600 text-white px-4 py-1.5 rounded min-w-[130px] max-w-[130px] text-sm ml-4">
-                Cotiza tu envío
+                    Cotiza tu envío
                 </button>
-                
             </div>
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
+        <!-- Sección Inicio con animación -->
         <section id="inicio" class="flex flex-col md:flex-row items-center mb-8 scroll-mt-[150px]">
-            <div class="md:w-1/2 text-left mobile-center">
+            <div class="md:w-1/2 text-left mobile-center scroll-animate animate-up">
                 <h1 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Soluciones logísticas integrales: primera, media y ultima milla con almacenamiento y recoleción confiables</h1>
                 <p class="text-lg text-gray-600 mb-6">Conectamos tu cadena logística de inicio a fin, asegurando entregas eficientes, seguras y puntuales en el sureste de México.</p>
-                
                 <p class="text-gray-500 mt-2">Respuesta en menos de 24 horas</p>
             </div>
-            <div class="md:w-1/2 text-center relative-container">
-                <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://github.com/angeldm1990/mhtl/blob/main/camionlogo.jpg?raw=true"/>
+            <div class="md:w-1/2 text-center relative-container scroll-animate animate-up">
+                <img alt="Delivery person with a van" class="w-full rounded" style="height: 400px; object-fit: cover;" src="https://github.com/angeldm1990/mhtl/blob/main/trailermhbajo.png?raw=true"/>
             </div>
         </section>
 
-        <!-- Modal del formulario mejorado -->
+        <!-- Modal del formulario -->
         <div id="cotizacionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()" style="float: right; cursor: pointer; font-size: 1.5rem;">&times;</span>
@@ -229,112 +285,104 @@
             </div>
         </div>
 
-            <div class="bg-white shadow rounded-lg p-4 md:p-8 w-full mb-12">
-        <!-- Título oculto pero espacio respetado -->
-         <div id="servicios" class="mt-12" style="scroll-margin-top: 115px;">
-        <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-12 text-center md:text-left uppercase invisible">SERVICIOS</h2>
+        <!-- Sección Servicios con animaciones -->
+        <div class="bg-white shadow rounded-lg p-4 md:p-8 w-full mb-12 scroll-animate animate-up">
+            <div id="servicios" class="mt-12" style="scroll-margin-top: 150px;">
+                <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-12 text-center md:text-left uppercase invisible">SERVICIOS</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+                <!-- Servicio 1 -->
+                <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100 scroll-animate animate-left">
+                    <div class="flex items-center mb-3 justify-center md:justify-start">
+                        <i class="fas fa-truck-loading text-2xl md:text-3xl mr-2 text-blue-600"></i>
+                        <h3 class="text-xl md:text-2xl font-semibold">Primera Milla</h3>
+                    </div>
+                    <p class="text-gray-600 md:text-lg">
+                        Recolectamos mercancía desde origen y la trasladamos a puntos logísticos iniciales.
+                    </p>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100 scroll-animate animate-up">
+                    <div class="flex items-center mb-3 justify-center md:justify-start">
+                        <i class="fas fa-truck-moving text-2xl md:text-3xl mr-2 text-blue-600"></i>
+                        <h3 class="text-xl md:text-2xl font-semibold">Media Milla</h3>
+                    </div>
+                    <p class="text-gray-600 md:text-lg">
+                        Transporte entre centros logísticos optimizando eficiencia operativa.
+                    </p>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100 scroll-animate animate-up">
+                    <div class="flex items-center mb-3 justify-center md:justify-start">
+                        <i class="fas fa-warehouse text-2xl md:text-3xl mr-2 text-blue-600"></i>
+                        <h3 class="text-xl md:text-2xl font-semibold">Almacenamiento</h3>
+                    </div>
+                    <p class="text-gray-600 md:text-lg">
+                        Espacios seguros con control de inventario y trazabilidad.
+                    </p>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="text-center md:text-left scroll-animate animate-right">
+                    <div class="flex items-center mb-3 justify-center md:justify-start">
+                        <i class="fas fa-calendar-check text-2xl md:text-3xl mr-2 text-blue-600"></i>
+                        <h3 class="text-xl md:text-2xl font-semibold">Entregas Programadas</h3>
+                    </div>
+                    <p class="text-gray-600 md:text-lg">
+                        Calendarización precisa según requerimientos del cliente.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
-            <!-- Servicio 1 -->
-            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
-                <div class="flex items-center mb-3 justify-center md:justify-start">
-                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
-                    <h3 class="text-xl md:text-2xl font-semibold">Primera Milla</h3>
+
+        <!-- Sección Cobertura con animaciones -->
+        <div id="cobertura" class="mt-12" style="scroll-margin-top: 155px;"></div>
+        <div class="bg-white shadow rounded p-4 mb-10 scroll-animate animate-up" style="position: relative; z-index: 1;">
+            <p class="text-lg text-gray-600 mt-4 text-center scroll-animate animate-fade" style="position: relative; z-index: 2;">
+                Operamos con infraestructura propia en el sureste del país, brindando soluciones logísticas eficientes en los siguientes estados:
+            </p>
+        </br>
+            <div class="grid grid-cols-2 items-center justify-items-center gap-4 mb-6" style="position: relative; z-index: 2;">
+                <ul class="list-disc text-lg text-gray-700 text-center space-y-1 scroll-animate animate-left">
+                    <li>Chiapas</li>
+                    <li>Tabasco</li>
+                    <li>Veracruz</li>
+                    <li>Campeche</li>
+                    <li>Yucatán</li>
+                    <li>Quintana Roo</li>
+                </ul>
+                <div class="flex justify-center scroll-animate animate-right">
+                    <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png"
+                         alt="Mapa de México"
+                         class="object-contain max-w-[140px] sm:max-w-[180px] md:max-w-[220px]" style="background: transparent;">
                 </div>
-                <p class="text-gray-600 md:text-lg">
-                    Recolectamos mercancía desde origen y la trasladamos a puntos logísticos iniciales.
-                </p>
             </div>
-            
-            <!-- Servicio 2 -->
-            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
-                <div class="flex items-center mb-3 justify-center md:justify-start">
-                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
-                    <h3 class="text-xl md:text-2xl font-semibold">Media Milla</h3>
-                </div>
-                <p class="text-gray-600 md:text-lg">
-                    Transporte entre centros logísticos optimizando eficiencia operativa.
+            <p class="text-lg text-gray-600 mt-4 text-center scroll-animate animate-fade" style="position: relative; z-index: 2;">
+                Nuestra presencia estratégica nos permite atender entregas urbanas, foráneas y programadas con altos estándares de calidad y cumplimiento.
+            </p>
+        </div>
+
+        <!-- Sección Nosotros con animaciones -->
+        <div class="bg-white shadow rounded p-4 mb-10 scroll-animate animate-scale" style="position: relative; z-index: 1;">
+            <div id="nosotros" class="mt-12" style="scroll-margin-top: 185px;">
+                <p class="text-lg text-gray-600 mt-4 text-center scroll-animate animate-fade" style="position: relative; z-index: 2;">
+                    En MH Transport Logistic, somos una empresa especializada en soluciones de transporte y logística de última milla, media milla y primera milla. Con más de 5 años de experiencia, hemos logrado posicionarnos como un socio confiable para marcas líderes del sector retail, e-commerce y distribución.
                 </p>
-            </div>
-            
-            <!-- Servicio 3 -->
-            <div class="text-center md:text-left pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-gray-100">
-                <div class="flex items-center mb-3 justify-center md:justify-start">
-                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
-                    <h3 class="text-xl md:text-2xl font-semibold">Almacenamiento</h3>
-                </div>
-                <p class="text-gray-600 md:text-lg">
-                    Espacios seguros con control de inventario y trazabilidad.
+            </br>
+                <p class="text-lg text-gray-600 mb-6 text-center scroll-animate animate-up" style="position: relative; z-index: 2;">
+                    Contamos con un equipo operativo altamente capacitado, infraestructura propia, tecnología de monitoreo y un compromiso firme con la puntualidad, seguridad y eficiencia en cada entrega.
                 </p>
-            </div>
-            
-            <!-- Servicio 4 -->
-            <div class="text-center md:text-left">
-                <div class="flex items-center mb-3 justify-center md:justify-start">
-                    <span class="text-2xl md:text-3xl mr-2">🔹</span>
-                    <h3 class="text-xl md:text-2xl font-semibold">Entregas Programadas</h3>
-                </div>
-                <p class="text-gray-600 md:text-lg">
-                    Calendarización precisa según requerimientos del cliente.
+                <p class="text-lg text-gray-600 text-center scroll-animate animate-up" style="position: relative; z-index: 2;">
+                    Nuestro enfoque está en brindar un servicio flexible, profesional y adaptado a las necesidades de cada cliente.
                 </p>
             </div>
         </div>
-    </div>
 
-            <div id="cobertura" class="mt-12" style="scroll-margin-top: 115px;"></div>
-         <div class="bg-white shadow rounded p-4 mb-10" style="position: relative; z-index: 1;">
-    <!-- Texto introductorio -->
-    <div id="" class="mt-12" style="scroll-margin-top: 115px;">
-        <p class="text-2xl font-medium mb-4 text-center" style="position: relative; z-index: 2;">
-            Operamos con infraestructura propia en el sureste del país, brindando soluciones logísticas eficientes en los siguientes estados:
-        </p>
-    </div>
-
-    <!-- Estados + Mapa siempre en columnas -->
-    <div class="grid grid-cols-2 items-center justify-items-center gap-4 mb-6" style="position: relative; z-index: 2;">
-        <!-- Lista de estados centrada -->
-        <ul class="list-disc text-lg text-gray-700 text-center space-y-1">
-            <li>Chiapas</li>
-            <li>Tabasco</li>
-            <li>Veracruz</li>
-            <li>Campeche</li>
-            <li>Yucatán</li>
-            <li>Quintana Roo</li>
-        </ul>
-
-        <!-- Mapa más grande y centrado -->
-        <div class="flex justify-center">
-            <img src="https://static.vecteezy.com/system/resources/previews/014/219/853/non_2x/doodle-freehand-drawing-of-mexico-map-free-png.png"
-                 alt="Mapa de México"
-                 class="object-contain max-w-[140px] sm:max-w-[180px] md:max-w-[220px]" style="background: transparent;">
-        </div>
-    </div>
-
-    <!-- Texto final -->
-    <p class="text-lg text-gray-600 mt-4 text-center" style="position: relative; z-index: 2;">
-        Nuestra presencia estratégica nos permite atender entregas urbanas, foráneas y programadas con altos estándares de calidad y cumplimiento.
-    </p>
-    </div>
-
-
-<div class="bg-white shadow rounded p-4 mb-10" style="position: relative; z-index: 1;">
-    <div id="nosotros" class="mt-12" style="scroll-margin-top: 170px;">
-    <p class="text-2xl font-medium mb-4 text-center" style="position: relative; z-index: 2;">
-        En MH Transport Logistic, somos una empresa especializada en soluciones de transporte y logística de última milla, media milla y primera milla. Con más de 5 años de experiencia, hemos logrado posicionarnos como un socio confiable para marcas líderes del sector retail, e-commerce y distribución.
-    </p>
-
-    <p class="text-lg text-gray-600 mb-6 text-center" style="position: relative; z-index: 2;">
-        Contamos con un equipo operativo altamente capacitado, infraestructura propia, tecnología de monitoreo y un compromiso firme con la puntualidad, seguridad y eficiencia en cada entrega.
-    </p>
-
-    <p class="text-lg text-gray-600 text-center" style="position: relative; z-index: 2;">
-        Nuestro enfoque está en brindar un servicio flexible, profesional y adaptado a las necesidades de cada cliente.
-    </p>
-</div>
-
-
-
-        <section class="text-center logo-section"> <div class="flex justify-center space-x-4">
+        <!-- Logos con animación -->
+        <section class="text-center logo-section scroll-animate animate-fade">
+            <div class="flex justify-center space-x-4">
                 <img alt="Amazon logo" height="40" src="https://i0.wp.com/www.vectorizando.com/wp-content/uploads/2021/04/amazon-logo-8c24bba4.png?fit=500%2C500&ssl=1" width="100"/>
                 <img alt="Mercado Libre logo" height="40" src="https://rappicard.mx/wp-content/uploads/2024/10/logo-mercado-libre.png" width="100"/>
                 <img alt="Liverpool logo" height="40" src="https://centrosantafe.com.mx/cdn/shop/products/Liverpool.png?v=1592500684" width="100"/>
@@ -371,14 +419,13 @@
             }
         }
 
-        // Manejar el envío del formulario con AJAX (versión mejorada)
+        // Manejar el envío del formulario con AJAX
         document.getElementById('cotizacionForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const form = e.target;
             const formData = new FormData(form);
             
-            // Agregar parámetros especiales para FormSubmit
             formData.append('_captcha', 'false');
             formData.append('_next', window.location.href + '#inicio');
             
@@ -392,13 +439,8 @@
                 });
 
                 if (response.ok) {
-                    // Mostrar mensaje de éxito
                     document.getElementById('mensajeExito').style.display = 'block';
-                    
-                    // Opcional: Resetear el formulario
                     form.reset();
-                    
-                    // Cerrar el modal después de 2 segundos
                     setTimeout(closeModal, 2000);
                 } else {
                     alert('Error al enviar el formulario. Por favor, inténtalo de nuevo.');
@@ -408,6 +450,25 @@
                 alert('Error de conexión. Por favor, revisa tu red e inténtalo de nuevo.');
             }
         });
+
+       // ========== ANIMACIONES AL SCROLL (VERSIÓN CONTINUA) ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateOnScroll = () => {
+                document.querySelectorAll('.scroll-animate').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom >= 0;
+                    if (isVisible) {
+                        el.classList.add('animated');
+                    } else {
+                        el.classList.remove('animated');
+                    }
+                });
+            };
+    
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('resize', animateOnScroll);
+});
     </script>
 </body>
 </html>
